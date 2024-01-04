@@ -14,11 +14,15 @@ export const signupController = async (req: Request, res: Response) => {
 
     const user = await signup(email, username, password);
 
-    if (user instanceof Error) {
-      return res.status(409).json({ error: user.message });
+    if(user.status === 400) {
+      return res.status(400).json({ error: user.message });
     }
 
-    res.status(201).json({ message: 'User created successfully' });
+    if(user.status === 500) {
+      return res.status(500).json({ error: user.message });
+    }
+
+    res.status(user.status).json({ message: user.message, token: user.token });
   } catch (error) {
     console.error("error signupController :>>",error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -35,14 +39,18 @@ export const loginController = async (req: Request, res: Response, next: NextFun
 
     const { email, username, password } = value;
 
-    const isLoggedIn : any = await login(email, username, password);
+    const isLoggedIn = await login(email, username, password);
 
-    if (isLoggedIn.error) {
+    if (isLoggedIn.status === 401) {
       return res.status(401).json({ error: isLoggedIn.error });
     }
 
+    if (isLoggedIn.status === 500) {
+      return res.status(500).json({ error: isLoggedIn.error });
+    }
+
     res.cookie('jwt', isLoggedIn.token, { httpOnly: true, secure: true });
-    res.status(200).json({ message: 'Login successful', token: isLoggedIn.token });
+    res.status(200).json({ message: isLoggedIn.message, token: isLoggedIn.token });
 
   }
   catch (error) {

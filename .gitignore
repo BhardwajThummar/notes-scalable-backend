@@ -1,3 +1,5 @@
 node_modules
 # .env
 /dist
+.test_report
+.nyc_output

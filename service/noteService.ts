@@ -8,6 +8,7 @@ export const getAllNotes = async (userId: string) => {
                 { userId: userId },
                 { isShared: true }
             ],
+            isDeleted: false
         });
         return {
             data: notes,
@@ -35,7 +36,8 @@ export const getNoteById = async (userId: string, noteId: string) => {
                     { isShared: true }
                 ],
                 // userId: userId,
-                _id: noteId
+                _id: noteId,
+                isDeleted: false
             });
         return {
             data: note,
