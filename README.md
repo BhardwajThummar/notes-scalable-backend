@@ -22,6 +22,7 @@ This project is a secure and scalable RESTful API for managing notes. Users can 
 - **Passport.js (for authentication)**
 - **Joi (for validation)**
 - **Mongoose (for MongoDB interactions)**
+- **Chai/Mocha (for testing)**
 
 ## Setup
 
