@@ -23,22 +23,6 @@ This project is a secure and scalable RESTful API for managing notes. Users can 
 - **Joi (for validation)**
 - **Mongoose (for MongoDB interactions)**
 
-## Folder Structure
-
-/project-root
-|-- config
-|-- controllers
-|-- middleware
-|-- models
-|-- routes
-|-- tests
-|-- validate
-|-- .env
-|-- .gitignore
-|-- app.ts
-|-- package.json
-|-- README.md
-
 ## Setup
 
 1. Clone the repository.
