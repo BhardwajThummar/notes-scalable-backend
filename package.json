@@ -4,13 +4,13 @@
   "description": "",
   "main": "app.js",
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
-    "start": "ts-node app.ts",
-    "build": "tsc",
-    "test": "mocha --require ts-node/register /**/*.test.ts"
-  },
+    "start": "node ./dist/app.js",
+    "dev": "nodemon app.ts",
+    "build": "tsc"
+   },
   "keywords": [],
   "author": "",
   "license": "ISC",
